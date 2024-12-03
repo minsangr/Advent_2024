@@ -8,15 +8,22 @@ def get_file_data(file_name):
 
 file_data = get_file_data("Day01Input.txt")
 # you now have a list of Strings from the input file
-print(file_data)
 
-sample = "1-3 a: abcde"
-
-split_sample = sample.split(" ")
-
+splitted = []
 for i in file_data:
-    print(i.split("   "))
+    splitted.append(i.split("   "))
 
-print(split_sample[0])
-print(split_sample[1])
-print(split_sample[2])
+list1 = []
+list2 = []
+
+for i in splitted:
+    list1.append(i[0])
+    list2.append(i[1])
+
+list1.sort()
+list2.sort()
+
+sum = 0
+for i in range(0, len(list1)):
+    sum += abs(int(list1[i]) - int(list2[i]))
+print(sum)
