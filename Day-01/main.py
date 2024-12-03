@@ -27,3 +27,12 @@ sum = 0
 for i in range(0, len(list1)):
     sum += abs(int(list1[i]) - int(list2[i]))
 print(sum)
+
+similarity = 0
+for i in list1:
+    count = 0
+    for j in list2:
+        if i == j:
+            count += 1
+    similarity += count * int(i)
+print(similarity)
