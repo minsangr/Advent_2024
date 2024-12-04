@@ -11,11 +11,16 @@ file_data = get_file_data("Day02Input.txt")
 
 print(file_data)
 
-safe = 0
+splitted = []
 for i in file_data:
-    first = i[0]
-    second = i[1]
-    if first < second:
-        for j in range(0,len(i)):
-            if not i[j] <
-    for j in i:
+    splitted.append(i.split(" "))
+print(splitted)
+
+diff = []
+for array in splitted:
+    miniDiff = []
+    for index in range(0, len(array) - 1):
+        miniDiff.append(int(array[index]) - int(array[index + 1]))
+    diff.append(miniDiff)
+print(diff)
+
