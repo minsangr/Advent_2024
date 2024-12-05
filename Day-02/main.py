@@ -5,6 +5,36 @@ def get_file_data(file_name):
         data.append(line.rstrip())
     return data
 
+def difference(file_name):
+    diff = []
+    for array in file_name:
+        miniDiff = []
+        for index in range(0, len(array) - 1):
+            miniDiff.append(int(array[index]) - int(array[index + 1]))
+        diff.append(miniDiff)
+    return diff
+
+def validity(num, sign):
+    if abs(num) < 1 or abs(num) > 3:
+        return False
+    if sign:
+        if num < 0:
+            return False
+    else:
+        if num > 0:
+            return False
+    return True
+
+def evalSign(array):
+    count = 0
+    for i in array:
+        if i > 0:
+            count += 1
+        else:
+            count -= 1
+    if count < 0:
+        return False
+    return True
 
 file_data = get_file_data("Day02Input.txt")
 # you now have a list of Strings from the input file
@@ -16,31 +46,23 @@ for i in file_data:
     splitted.append(i.split(" "))
 print(splitted)
 
-diff = []
-for array in splitted:
-    miniDiff = []
-    for index in range(0, len(array) - 1):
-        miniDiff.append(int(array[index]) - int(array[index + 1]))
-    diff.append(miniDiff)
+diff = difference(splitted)
+
 print(diff)
 
 safe = 0
+unsafe = []
 for array in diff:
     valid = True
-    if array[0] > 0:
-        pos = True
-    else:
-        pos = False
+    sign = evalSign(array)
     for i in array:
         if not valid:
             break
-        if abs(i) < 1 or abs(i) > 3:
-            valid = False
-        if pos and i < 0:
-            valid = False
-        if not pos and i > 0:
+        if not validity(i, sign):
             valid = False
     if valid:
         safe += 1
-
+    else:
+        unsafe.append(array)
 print(safe)
+print(unsafe)
