@@ -24,3 +24,23 @@ for array in splitted:
     diff.append(miniDiff)
 print(diff)
 
+safe = 0
+for array in diff:
+    valid = True
+    if array[0] > 0:
+        pos = True
+    else:
+        pos = False
+    for i in array:
+        if not valid:
+            break
+        if abs(i) < 1 or abs(i) > 3:
+            valid = False
+        if pos and i < 0:
+            valid = False
+        if not pos and i > 0:
+            valid = False
+    if valid:
+        safe += 1
+
+print(safe)
