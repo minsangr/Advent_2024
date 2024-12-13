@@ -17,11 +17,13 @@ for row in file_data:
 
 #print(puzzle)
 
-def horizontalStraight(row):
+def horizontalStraight(grid):
     count = 0
-    for i in range(0, len(row) - 3):
-        if row[i] == "X" and row[i + 1] == "M" and row[i + 2] == "A" and row[i + 3] == "S":
-            count += 1
+    for row in range(0, len(grid)):
+        print(grid[row])
+        for i in range(0, len(row) - 3):
+            if row[i] == "X" and row[i + 1] == "M" and row[i + 2] == "A" and row[i + 3] == "S":
+                count += 1
     return count
 
 def horizontalReverse(row):
@@ -108,3 +110,4 @@ print(diagonalStraightLeft(quadCol3))
 quadCol4 = get_file_data("quadColTest4.txt")
 print(quadCol4)
 print(diagonalReverseRight(quadCol4))
+
