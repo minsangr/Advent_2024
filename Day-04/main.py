@@ -6,7 +6,7 @@ def get_file_data(file_name):
     return data
 
 file_data = get_file_data("Day04Input.txt")
-print(file_data)
+#print(file_data)
 
 puzzle = []
 for row in file_data:
@@ -15,7 +15,7 @@ for row in file_data:
         array.append(char)
     puzzle.append(array)
 
-print(puzzle)
+#print(puzzle)
 
 def horizontalStraight(row):
     count = 0
@@ -69,7 +69,7 @@ def diagonalStraightLeft(grid):
                 count += 1
     return count
 
-def diagonalReverseLeft(grid):
+def diagonalReverseRight(grid):
     count = 0
     for row in range(3, len(grid)):
         for col in range(0, len(grid[row]) - 3):
@@ -104,3 +104,7 @@ print(diagonalReverseLeft(quadCol2))
 quadCol3 = get_file_data("quadColTest3.txt")
 print(quadCol3)
 print(diagonalStraightLeft(quadCol3))
+
+quadCol4 = get_file_data("quadColTest4.txt")
+print(quadCol4)
+print(diagonalReverseRight(quadCol4))
