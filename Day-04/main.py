@@ -17,6 +17,7 @@ for row in file_data:
 
 #print(puzzle)
 
+"""
 def horizontalStraight(row):
     count = 0
     for i in range(0, len(row) - 3):
@@ -44,39 +45,43 @@ def verticalReverse(col):
         if col[i] == "X" and col[i - 1] == "M" and col[i - 2] == "A" and col[i - 3] == "S":
             count += 1
     return count
+"""
 
 def diagonalStraightRight(grid):
     count = 0
-    for row in range(0, len(grid) - 3):
-        for col in range(0, len(grid[row]) - 3):
-            if grid[row][col] == "X" and grid[row + 1][col + 1] == "M" and grid[row + 2][col + 2] == "A" and grid[row + 3][col + 3] == "S":
+    for row in range(0, len(grid) - 2):
+        for col in range(0, len(grid[row]) - 2):
+            if grid[row][col] == "M" and grid[row + 1][col + 1] == "A" and grid[row + 2][col + 2] == "S":
                 count += 1
+                #DIAGONAL STRAIGHT LEFT
+                #DIAGONAL STRAIGHT
     return count
 
 def diagonalReverseLeft(grid):
     count = 0
-    for row in range(3, len(grid)):
-        for col in range(3, len(grid[row])):
-            if grid[row][col] == "X" and grid[row - 1][col - 1] == "M" and grid[row - 2][col - 2] == "A" and grid[row - 3][col - 3] == "S":
+    for row in range(2, len(grid)):
+        for col in range(2, len(grid[row])):
+            if grid[row][col] == "M" and grid[row - 1][col - 1] == "A" and grid[row - 2][col - 2] == "S":
                 count += 1
     return count
 
 def diagonalStraightLeft(grid):
     count = 0
-    for row in range(0, len(grid) - 3):
-        for col in range(3, len(grid[row])):
-            if grid[row][col] == "X" and grid[row + 1][col - 1] == "M" and grid[row + 2][col - 2] == "A" and grid[row + 3][col - 3] == "S":
+    for row in range(0, len(grid) - 2):
+        for col in range(2, len(grid[row])):
+            if grid[row][col] == "M" and grid[row + 1][col - 1] == "A" and grid[row + 2][col - 2] == "S":
                 count += 1
     return count
 
 def diagonalReverseRight(grid):
     count = 0
-    for row in range(3, len(grid)):
-        for col in range(0, len(grid[row]) - 3):
-            if grid[row][col] == "X" and grid[row - 1][col + 1] == "M" and grid[row - 2][col + 2] == "A" and grid[row - 3][col + 3] == "S":
+    for row in range(2, len(grid)):
+        for col in range(0, len(grid[row]) - 2):
+            if grid[row][col] == "M" and grid[row - 1][col + 1] == "A" and grid[row - 2][col + 2] == "S":
                 count += 1
     return count
 
+"""
 singleRow = get_file_data("singleRowTest.txt")
 print(singleRow)
 print(horizontalStraight(singleRow[0]))
@@ -92,6 +97,7 @@ print(verticalStraight(singleCol))
 singleCol2 = get_file_data("singleColTest2.txt")
 print(singleCol2)
 print(verticalReverse(singleCol2))
+"""
 
 quadCol = get_file_data("quadColTest.txt")
 print(quadCol)
@@ -110,7 +116,7 @@ print(quadCol4)
 print(diagonalReverseRight(quadCol4))
 
 sum = 0
-col = []
+"""
 for row in file_data:
     sum += horizontalStraight(row)
     sum += horizontalReverse(row)
@@ -119,6 +125,7 @@ for i in range(0, len(file_data)):
     col = [row[i] for row in file_data]
     sum += verticalStraight(col)
     sum += verticalReverse(col)
+"""
 
 sum += diagonalStraightRight(file_data)
 sum += diagonalStraightLeft(file_data)
