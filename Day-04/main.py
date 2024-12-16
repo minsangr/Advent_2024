@@ -48,38 +48,38 @@ def verticalReverse(col):
 """
 
 def diagonalStraightRight(grid):
-    count = 0
     for row in range(0, len(grid) - 2):
         for col in range(0, len(grid[row]) - 2):
             if grid[row][col] == "M" and grid[row + 1][col + 1] == "A" and grid[row + 2][col + 2] == "S":
-                count += 1
-                #DIAGONAL STRAIGHT LEFT
-                #DIAGONAL STRAIGHT
-    return count
+                return True
+    return False
 
 def diagonalReverseLeft(grid):
-    count = 0
     for row in range(2, len(grid)):
         for col in range(2, len(grid[row])):
             if grid[row][col] == "M" and grid[row - 1][col - 1] == "A" and grid[row - 2][col - 2] == "S":
-                count += 1
-    return count
+                return True
+    return False
 
 def diagonalStraightLeft(grid):
-    count = 0
     for row in range(0, len(grid) - 2):
         for col in range(2, len(grid[row])):
             if grid[row][col] == "M" and grid[row + 1][col - 1] == "A" and grid[row + 2][col - 2] == "S":
-                count += 1
-    return count
+                return True
+    return False
 
 def diagonalReverseRight(grid):
-    count = 0
     for row in range(2, len(grid)):
         for col in range(0, len(grid[row]) - 2):
             if grid[row][col] == "M" and grid[row - 1][col + 1] == "A" and grid[row - 2][col + 2] == "S":
-                count += 1
-    return count
+                return True
+    return False
+
+def findX(grid):
+    if (diagonalStraightRight(grid) or diagonalReverseLeft(grid)) and (diagonalStraightLeft(grid) or diagonalReverseRight(grid)):
+        return True
+    return False
+
 
 """
 singleRow = get_file_data("singleRowTest.txt")
@@ -97,7 +97,6 @@ print(verticalStraight(singleCol))
 singleCol2 = get_file_data("singleColTest2.txt")
 print(singleCol2)
 print(verticalReverse(singleCol2))
-"""
 
 quadCol = get_file_data("quadColTest.txt")
 print(quadCol)
@@ -115,8 +114,6 @@ quadCol4 = get_file_data("quadColTest4.txt")
 print(quadCol4)
 print(diagonalReverseRight(quadCol4))
 
-sum = 0
-"""
 for row in file_data:
     sum += horizontalStraight(row)
     sum += horizontalReverse(row)
@@ -127,9 +124,12 @@ for i in range(0, len(file_data)):
     sum += verticalReverse(col)
 """
 
-sum += diagonalStraightRight(file_data)
-sum += diagonalStraightLeft(file_data)
-sum += diagonalReverseRight(file_data)
-sum += diagonalReverseLeft(file_data)
+print(puzzle)
 
+sum = 0
+for row in range(0, len(puzzle) - 2):
+    for col in range(0, len(puzzle[row]) - 2):
+        print([row[col:col+3] for row in puzzle[row:row+3]])
+        if findX([row[col:col+3] for row in puzzle[row:row+3]]):
+            sum += 1
 print(sum)
